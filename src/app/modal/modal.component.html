@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+<div class="modal-dialog">
+  <div class="modal-content">
+     <div class="modal-header">
+      <h4 class="modal-title">{{title}}</h4> <br>
+      <button type="button" class="close" (click)="close()" >&times;</button>
+       
+     </div>
+     <div class="modal-body">
+            <h5 class="modal-message">{{message}}</h5> <br>
+       <div class="row">
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr>
+                <th class="text-center">Tasks</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let task of _tasksArray">
+                <td class="text-center" style="width: 200px;">{{task.description}}</td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </div>
+     </div>
+      <div class="add-task"><input id="description" #description (click) = "description.value = null" [(ngModel)]="task.description" name="description" type="text" class="form-control" placeholder="New Task">
+       <button (click) = "taskSubmit()" class="btn btn-md btn-primary">Add New Task</button>
+    </div>
+      
+
+     <div class="modal-footer">
+       <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+     </div>
+   </div>
+</div>

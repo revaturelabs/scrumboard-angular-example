@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="jumbotron" style="width:600px; height:600px; text-align: center; overflow:auto">
+  <button (click) = "backToStories()" class="btn btn-sm btn-primary">Back to Stories</button>
+    <form (ngSubmit)="storySubmit()">
+
+      <div class="form-group">
+        <label for="sel3">Select Story Point:</label>
+        <select class="form-control" id="sel3" [(ngModel)]="story.storyPoints" name ="storyPoints" >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <br>
+
+        <label for="name">Story Name:</label>
+        <input class="form-control" id="name" [(ngModel)]="story.storyName" name ="storyName" type="text" placeholder="Enter name for new story">
+        <br>
+
+        <label for="comment">Description</label>
+        <textarea class="form-control" rows="5" id="comment" [(ngModel)]="story.storyDesc" name ="storyDesc" rows="4" cols="30"></textarea>
+        <br>
+
+        <button class="btn btn-default">Create</button>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+

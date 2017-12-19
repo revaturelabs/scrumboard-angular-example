@@ -1,0 +1,64 @@
+#usernameLabel,#boardName, #passwordLabel, #submitLabel, #msgLabel, #navbarContent, #boardName{
+  font-family: 'Dosis', sans-serif;
+}
+
+#taskInput{
+  text-decoration-color: transparent;
+}
+#rcorner {
+  border-radius: 10px;
+}
+#taskInput:hover{
+  cursor: pointer;
+}
+ #userStories:hover {
+
+    background-color: #EEE;
+    cursor: pointer;
+    color: #607d8b;
+  }
+
+  [class*='col-'] {
+    float: left;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+  }
+
+  #userStories{
+    border-radius: 10px;
+    width:15rem;
+    background:rgb(219, 222, 224);
+  }
+
+  #addLaneBtn{
+    margin-left: 25px;
+  }
+
+  .grid {
+    margin: 0;
+  }
+
+
+  .grid-pad {
+    margin-left: 25px;
+    padding: 5px 0;
+  }
+  .grid-pad > [class*='col-']:last-of-type {
+    padding-right: 10px;
+  }
+  .tasks{
+    list-style-type: none;
+  }
+
+button.delete{
+  float:right;
+  margin-top: 2px;
+  margin-right: .8em;
+  background-color: gray !important;
+  color:white;
+}
+
+button {
+  cursor: pointer;
+}

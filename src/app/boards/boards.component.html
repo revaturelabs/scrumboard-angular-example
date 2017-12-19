@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div>
+  <h2 id="boardName">
+    Boards:
+  </h2>
+    <div *ngIf="selectedBoard" id="selectedBoard">
+    <h2 id="boardName">
+      "{{selectedBoard.boardName}}" is selected
+    </h2>
+    <button (click)="onSelect(selectedBoard, selectedBoard.boardId, selectedBoard.boardName)" id="boardName">View Details</button>
+    <button (click)="viewComments(selectedBoard, selectedBoard.boardId)" id="boardName">View Comments</button>
+  </div>
+</div>
+<div class="relative" *ngIf="commentsService.visible">
+  <div class="container">
+    <div class="jumbotron">
+      <div>
+        <h2><strong>{{selectedBoard.boardName}}'s</strong> User Comments</h2>
+        <input class="form-control" id="name" [(ngModel)]="addComment.comment" name ="storyName" type="text" placeholder="Enter Comment Here">
+        <br>
+        <button class="btn btn-md btn-active" (click)="newComment(selectedBoard.boardId)"><strong>Add Comment</strong></button>
+        <ul class="comments">
+          <li *ngFor="let comment of comments">
+          <p>{{comment.comment}} by user with id: {{comment.scrumUserId}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<ul class="boards" style="position:relative;">
+  <li *ngFor="let board of boards | orderBy:['boardId', 'boardName']" (click)="Select(board, board.boardId)" [class.selected]="board === selectedBoard" style="width:400px;height:100px">
+    <span class="board-element">
+      <span class="badge">{{board.boardId}}</span>
+      <strong>{{board.boardName}}</strong>
+    </span>
+    <button *ngIf="boardsService.visible" class="btn btn-md delete-button" (click)="deleteBoard(board.boardId)">Delete</button>
+  </li>
+</ul>
+

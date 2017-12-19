@@ -1,0 +1,69 @@
+<div class="container">
+  <!-- <div class="jumbotron"> -->
+  <div class="alert alert-info">
+    <h2 class="text-center" id="boardName">{{currentBoardName}}
+    </h2>
+  </div>
+
+  <button *ngIf="swimlaneService.visible" style="float: right;" type="button" class="btn btn-primary" (click)="addStory()">Add a Story</button>
+  <button *ngIf="swimlaneService.visible" style="float: right;" type="button" class="btn btn-primary" (click)="addUser()">Add User</button>
+  <button style="float: right;" (click)="getChartSubmit()" routerLink="/chart" type="button" class="btn btn-primary">View Chart</button>
+
+  <br> <br>
+</div>
+
+<!-- Swimlane display-->
+<div class="grid grid-pad" style="width:2000px;height:1000px;overflow:auto">
+  <div *ngFor="let lane of lanes; let i = index" [attr.data-index]="i" id="rcorners1" id="rcorner" class="col-1-4">
+    <div class="story" style="background:#f0f8ff">
+      <div class="story-block">
+        <table>
+          <br>
+          <div>
+            <div class="module lane">
+                <div class="alert alert-success" role="alert">
+                  <strong><p class="text-center" id="boardName">{{lane.laneType}}</p></strong>
+                </div>
+              <!-- Start of Story -->
+              <ng-container *ngFor="let story of stories" class="col-1-4">
+                <div *ngIf="story.laneTypeId == lane.laneId" >
+                  <tr>
+                    <td *ngIf="i > 0">
+                      <button style="float: left" type="button" class="btn-sm btn-info" (click)="switchLane(story,story.storyId,i-1)"><
+                        </button>
+                    </td>
+                    <td>
+                      <div id="userStories" class="story">
+                        <div (click)="displayTasks(story.storyId, story.storyName, story.storyDesc, story.storyPoints)" class="story-block">
+                          <div class="alert alert-info" role="alert"><p id="boardName">Points: {{story.storyPoints}}</p> </div>
+                          <h6 class="text-center" data-toggle="modal" data-target=".story-modal-sm"><strong id="boardName">{{story.storyName}}</strong></h6>
+                          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                        <div class="card">
+                          <div class="card-block text-nowrap">
+                            <p id="boardName">
+                            {{story.storyDesc}}
+                            </p>
+                          </div>
+                        </div>
+                        <div>
+                          <button *ngIf="swimlaneService.visible" (click) = "deleteStory(story.storyId)" class="btn btn-sm btn-danger btn-block">Delete Story</button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <button style="float: right" type="button" class="btn-sm btn-info" (click)="switchLane(story,story.storyId,i+1)">></button>
+                    </td>
+                  </tr>
+                  <br>
+                </div>
+              <!-- End of Story-->
+              </ng-container>
+            </div>
+          </div>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Swimlane -->

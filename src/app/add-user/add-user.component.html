@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="jumbotron" style="width:600px; height:600px; text-align: center; overflow:auto">
+  <button (click) = "backToStories()" class="btn btn-sm btn-primary">Back to Stories</button>
+
+    <div *ngIf="usersOnBoard">
+      <ul class="usersOnBoard">
+        <strong class="text-center">On Board: </strong>
+        <li *ngFor="let user of usersOnBoard">
+          Name: {{user.scrumUserFirstname}}, Id:{{user.scrumUserId}} and Role: {{user.roleId.roleName}}
+        </li>
+      </ul>
+    </div>
+    <br>
+
+    <div *ngIf="usersNotOnBoard">
+      <ul class="usersNotOnBoard">
+        <strong class="text-center">Not On Board: </strong>
+        <li *ngFor="let user of usersNotOnBoard">
+          Name: {{user.scrumUserFirstname}}, Id:{{user.scrumUserId}} and Role: {{user.roleId.roleName}}
+        </li>
+      </ul>
+    </div>
+    <br>
+    <form>
+
+      <div class="form-group">
+        <label for="name">User Id:</label>
+        <input class="form-control" id="name" [(ngModel)]="addUser.scrumUserId" name ="user" type="text" placeholder="Enter User Id">
+        <br>
+
+        <button class="btn btn-default" (click)="addUserSubmit(addUser.scrumUserId)">Add</button>
+
+      </div>
+    </form>
+  </div>
+</div>

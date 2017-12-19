@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<script src="node_modules/chart.js/src/chart.js"></script>
+<div class="alert alert-info">
+
+    <h2 class="text-center" style="float: center;" (click)="backToBoardDetails()">{{board.boardName}} </h2>
+</div>
+<div style="float: center;" class="row">
+        <div style="float: center;">
+      <canvas  baseChart  height="600" width="1200"
+                  [datasets]="chart.data.datasets"
+                  [labels]="chart.data.labels"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="chart.type"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+      </div>
+  </div>

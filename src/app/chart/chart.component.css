@@ -1,0 +1,22 @@
+canvas {
+    background-color: rgb(252, 252, 252);
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    height:auto;
+    width:auto;
+    margin: auto;
+    float: center;
+    width: 100% !important;
+    max-width: 1200;
+    height: auto !important;
+    max-height: 600;
+    /* padding-left: 100; */
+}
+
+button {
+    cursor: pointer;
+}
+h2 {
+    cursor: pointer;
+}
+

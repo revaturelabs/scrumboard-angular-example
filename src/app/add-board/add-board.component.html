@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<div class="col-md-6" >
+    <div class="form-group" >
+      <label for ="description" id="boardHeader">Add a New Board</label>
+      <textarea [(ngModel)]="newBoard.boardName" class="form-control" id="description" placeholder="Enter Board Name Here"></textarea>
+    </div>
+    <div>
+      <button type="button" class="add-button" (click)="addBoard()"><i class="fa fa-paper-plane" aria-hidden="true" ></i>Add</button>
+    </div>
+</div>

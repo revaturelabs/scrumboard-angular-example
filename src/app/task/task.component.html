@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<!-- Bootstrap 4.x -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
+    integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<div class ="container">
+  
+<form (ngSubmit)="taskSubmit()">
+<!-- change this eventually to put into a story, add functionality to clear text when clicked, filter/validation to hide if not Master/Dev -->
+<div class="form-group">
+  <label for="storyId"> Story ID:</label> <input type="text" [(ngModel)]="task.storyId" name ="storyId" 
+      id="storyId" class="form-control" placeholder="Story ID">
+</div>
+<div class="form-group">
+    <label for="description"> Description:</label><input type="text" [(ngModel)]="task.description" name="description" 
+     id="description" class="form-control" placeholder="New Task Description"><br>
+  <button type="submit" class="btn btn-md btn-primary btn-block">Add New Task</button>
+</div>
+</form>
+
+<form (ngSubmit)="getTasksSubmit(storyIdInput.value)">
+  <!-- change this eventually to put into a story, add functionality to clear text when clicked, filter/validation to hide if not Master/Dev -->
+  <div class="form-group">
+    <label for="storyId"> Story ID:</label> <input type="text"  name ="storyId" #storyIdInput class="form-control" placeholder="Story ID">
+  </div>
+    <button type="submit" class="btn btn-md btn-primary btn-block">Get Tasks</button>
+  
+  </form>
+
+  
+      <div class="row">
+          <table class="table">
+              <thead class="thead-inverse">
+              <tr>
+                  <th class="text-center">Task ID</th>
+                  <th class="text-center">Story ID</th>
+                  <th class="text-center">Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let task of _tasksArray">
+                  <td class="text-center" style="width: 15px;">{{task.taskId}}</td>
+                  <td class="text-center" style="width: 15px;">{{task.storyId}}</td>
+                  <td class="text-center" style="width: 200px;">{{task.description}}</td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+  
+</div>
