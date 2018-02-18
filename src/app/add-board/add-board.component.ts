@@ -16,8 +16,8 @@ import { NewBoard } from '../boards/newBoard.interface';
 export class AddBoardComponent implements OnInit {
 
   newBoard: NewBoard = {
-    boardName:''
-  }
+    boardName: ''
+  };
 
   constructor(
     private boardsService: BoardsService,
@@ -29,13 +29,13 @@ export class AddBoardComponent implements OnInit {
 
   addBoard(): void {
 
-    if(this.newBoard.boardName == '') {
-      window.alert("Board Name cannot be empty");
+    if (this.newBoard.boardName == '') {
+      window.alert('Board Name cannot be empty');
     } else {
         this.boardsService.addBoard(this.newBoard).subscribe(
           res => {
             this.router.navigateByUrl('/boards');
-          })
+          });
       }
   }
 

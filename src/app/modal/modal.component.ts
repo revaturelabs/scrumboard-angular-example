@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
-import { Task } from '../task/task.interface'
+import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
+import { Task } from '../task/task.interface';
 import { TaskService } from '../task/task.service';
 import { ModalService } from './modal.service';
 
 export interface ModalModel {
-  title:string;
-  message:string;
+  title: string;
+  message: string;
 }
 
 @Component({
@@ -21,9 +21,9 @@ export class ModalComponent extends DialogComponent<ModalModel, boolean> impleme
 
   task: Task = {
     taskId:    null,
-    storyId: null,  
+    storyId: null,
     description : ''
-  }
+  };
 
   _tasksArray: Task[];
 
@@ -43,7 +43,7 @@ export class ModalComponent extends DialogComponent<ModalModel, boolean> impleme
         //places reponse of task-manager-service/getAllTasks/{storyId} into task array
         this._tasksArray = res;
       }
-    )
+    );
  }
 
   confirm() {
@@ -55,12 +55,12 @@ export class ModalComponent extends DialogComponent<ModalModel, boolean> impleme
 
   //create/add a new task
   taskSubmit() {
-    console.log("Creating new task: ", (this.task).description);
+    console.log('Creating new task: ', (this.task).description);
     this.task.storyId = JSON.parse(localStorage.getItem('currentStoryId'));
-    console.log("New task storyId: ", (this.task.storyId));
+    console.log('New task storyId: ', (this.task.storyId));
     this.taskService.createTask(this.task).subscribe(
       res => {
-          console.log("Create Task Success!", res);
+          console.log('Create Task Success!', res);
         this.showCurrentTasks();
       });
   }

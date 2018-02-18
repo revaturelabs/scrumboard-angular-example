@@ -18,7 +18,7 @@ export class AddUserService {
     private httpClient: HttpClient) { }
 
   private headers = new Headers({
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUsertoken')).token
   });
   private options = new RequestOptions({ headers: this.headers });

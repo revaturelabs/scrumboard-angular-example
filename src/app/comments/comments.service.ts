@@ -12,9 +12,9 @@ export class CommentsService {
   private GET_COMMENTS = '/board-comment-service/getCommentsForBoard/';
   private static readonly ADD_COMMENT = '/board-comment-service/newComment';
 
-  private headers = new Headers({ 
-    "Content-Type": "application/json",
-    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUsertoken')).token 
+  private headers = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUsertoken')).token
   });
   private options = new RequestOptions({ headers: this.headers });
 

@@ -33,7 +33,7 @@ export class UserService {
 
     // This setup the header information for the request.
     this.headersOauth = new Headers({
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUsertoken')).token
     });
     this.options = new RequestOptions({ headers: this.headersOauth });
@@ -43,20 +43,20 @@ export class UserService {
   }
 
   authenticate(user: User) {
-    this.url = "http://localhost:8765/user-service/oauth/token";
+    this.url = 'http://localhost:8765/user-service/oauth/token';
 
     // This sets up the header information for the request.
     this.headerslogin = new Headers({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Authorization": "Basic " + Base64.encode('clientid' + ':' + 'token')
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + Base64.encode('clientid' + ':' + 'token')
     });
     this.options = new RequestOptions({ headers: this.headerslogin });
 
     // This sets up the body information for the request.
-    let params = new URLSearchParams();
-    params.append('username',user.scrumUserUsername);
-    params.append('password',user.scrumUserPassword);
-    params.append('grant_type','password');
+    const params = new URLSearchParams();
+    params.append('username', user.scrumUserUsername);
+    params.append('password', user.scrumUserPassword);
+    params.append('grant_type', 'password');
 
     // Send the HTTP POST request.
     this.http.post(UserService.UATH_URL, params.toString(), this.options).delay(4000)
@@ -64,7 +64,7 @@ export class UserService {
 
         // Adds the token to the local storage for reuse.
         localStorage.setItem('currentUsertoken', JSON.stringify(
-          {userName:user.scrumUserUsername, token: response.access_token }));
+          {userName: user.scrumUserUsername, token: response.access_token }));
 
         // console.log(localStorage.getItem('currentUsertoken'));
       }, (error) => {

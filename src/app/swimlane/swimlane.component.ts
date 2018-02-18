@@ -10,7 +10,7 @@ import { MoveStory } from './move-story.interface';
 
 import { ModalComponent} from '../modal/modal.component';
 import { ModalService } from '../modal/modal.service';
-import { DialogService } from "ng2-bootstrap-modal";
+import { DialogService } from 'ng2-bootstrap-modal';
 import { ChartComponent } from '../chart/chart.component';
 import { ChartService } from '../chart/chart.service';
 import { TaskService } from '../task/task.service';
@@ -31,23 +31,23 @@ export class SwimlaneComponent implements OnInit {
   currentBoardName = this.currentBoard.boardName;
 
   lanes = [
-    { laneType: "Backlog", laneId: 1 },
-    { laneType: "To Do", laneId: 2 },
-    { laneType: "In Progress", laneId: 3 },
-    { laneType: "Test", laneId: 4 },
-    { laneType: "Verify", laneId: 5 },
-    { laneType: "Done", laneId: 6 },
-  ]
+    { laneType: 'Backlog', laneId: 1 },
+    { laneType: 'To Do', laneId: 2 },
+    { laneType: 'In Progress', laneId: 3 },
+    { laneType: 'Test', laneId: 4 },
+    { laneType: 'Verify', laneId: 5 },
+    { laneType: 'Done', laneId: 6 },
+  ];
 
-  story: MoveStory ={
+  story: MoveStory = {
     storyId: null,
     laneTypeId: null
-  }
+  };
 
 
   deleteThisStory: DeleteStory = {
     storyId: null
-  }
+  };
 
 
   stories: Story[];
@@ -56,7 +56,7 @@ export class SwimlaneComponent implements OnInit {
     taskId:    null,
     storyId: null,
     description : ''
-  }
+  };
 
   _tasksArray: Task[];
 
@@ -66,7 +66,7 @@ export class SwimlaneComponent implements OnInit {
     private swimlaneService: SwimlaneService,
     private createStoryService: CreateStoryService,
 
-    private dialogService:DialogService,
+    private dialogService: DialogService,
     private chartService: ChartService,
     private taskService: TaskService,
     private modalService: ModalService
@@ -77,7 +77,7 @@ export class SwimlaneComponent implements OnInit {
   ngOnInit() {
     this.displayAllStories();
 
-    if( this.roleId != 2) {
+    if ( this.roleId != 2) {
       this.swimlaneService.hide();
     } else {
       this.swimlaneService.show();
@@ -85,11 +85,11 @@ export class SwimlaneComponent implements OnInit {
   }
 
   addStory(): void {
-    this.router.navigateByUrl("/add-story");
+    this.router.navigateByUrl('/add-story');
   }
 
   addUser(): void {
-    this.router.navigateByUrl("/add-user");
+    this.router.navigateByUrl('/add-user');
   }
 
   displayAllStories(): void {
@@ -98,7 +98,7 @@ export class SwimlaneComponent implements OnInit {
         this.stories = res;
         // console.log("Stories: ", this.stories);
         localStorage.setItem('curentStories', JSON.stringify(res));
-      })
+      });
 
   }
 
@@ -122,7 +122,7 @@ export class SwimlaneComponent implements OnInit {
         // console.log("loadChart function success!", res);
         localStorage.setItem('currentChart', JSON.stringify(res));
       }
-    )
+    );
   }
 
   getChartSubmit() {
@@ -132,7 +132,7 @@ export class SwimlaneComponent implements OnInit {
   }
 
   taskSubmit() {
-    console.log("Creating new task: ", (this.task).description);
+    console.log('Creating new task: ', (this.task).description);
     this.taskService.createTask(this.task).subscribe(
       res => {
           // console.log("Create Task Success!", res);
@@ -158,10 +158,10 @@ export class SwimlaneComponent implements OnInit {
   //This will have a modal display the story name, story description, all the current tasks for the story, and allow the creation of a new story
   displayTasks(currentStoryId, currentStoryName, currentStoryDescription, currentStoryPoints) {
     localStorage.setItem('currentStoryId', currentStoryId);
-    let disposable = this.dialogService.addDialog(ModalComponent, {
+    const disposable = this.dialogService.addDialog(ModalComponent, {
         title: currentStoryName,  //test this
-        message: "Story Points: " + currentStoryPoints
-      } )
+        message: 'Story Points: ' + currentStoryPoints
+      } );
 
 }
 

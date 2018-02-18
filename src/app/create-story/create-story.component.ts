@@ -19,7 +19,7 @@ export class CreateStoryComponent implements OnInit {
     storyName: '',
     storyPoints: null,
     storyDesc: ''
-  }
+  };
 
   constructor(
     private storyService: CreateStoryService,
@@ -32,12 +32,12 @@ export class CreateStoryComponent implements OnInit {
   }
 
   storySubmit() {
-    if(this.story.storyName == null){
-      window.alert("Story Name cannot be empty");
-    } else if(this.story.storyPoints == null){
-      window.alert("You need to select story points");
-    } else if(this.story.storyDesc == null){
-      window.alert("Story description cannot be empty");
+    if (this.story.storyName == null){
+      window.alert('Story Name cannot be empty');
+    } else if (this.story.storyPoints == null){
+      window.alert('You need to select story points');
+    } else if (this.story.storyDesc == null){
+      window.alert('Story description cannot be empty');
     } else {
       this.storyService.createNewStory(this.story).subscribe(
       res => {

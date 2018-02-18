@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   user: User = {
     scrumUserUsername: '',
     scrumUserPassword: ''
-  }
+  };
 
   constructor(
     private userService: UserService,

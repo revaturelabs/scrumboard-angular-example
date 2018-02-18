@@ -1,5 +1,5 @@
 export interface Chart {
-    type: string,
+    type: string;
     data: {
         labels: [
             Array<string>
@@ -14,5 +14,5 @@ export interface Chart {
                 fill: boolean
             }
         ]
-    }
+    };
   }

@@ -27,16 +27,16 @@ export class BoardsComponent implements OnInit {
 
   boards: Board[];
 
-  order = "boardId";
+  order = 'boardId';
   ascending = true;
 
   newBoard: NewBoard = {
-    boardName:''
-  }
+    boardName: ''
+  };
 
   deleteThisBoard: DeleteBoard = {
     boardId: null
-  }
+  };
 
   selectedBoard: Board;
   id: number;
@@ -55,7 +55,7 @@ export class BoardsComponent implements OnInit {
   ngOnInit() {
     this.displayAllBoards();
 
-    if( this.roleId != 2) {
+    if ( this.roleId != 2) {
       this.boardsService.hide();
     } else {
       this.boardsService.show();
@@ -65,17 +65,17 @@ export class BoardsComponent implements OnInit {
   Select(board: Board, boardId): void {
     this.selectedBoard = board;
     this.loadChart(boardId);
-    localStorage.setItem('currentBoardId',boardId); //delete this if loadChart works
+    localStorage.setItem('currentBoardId', boardId); //delete this if loadChart works
   }
 
-  scrumUserId = JSON.parse(localStorage.getItem("currentUser")).scrumUserId;
+  scrumUserId = JSON.parse(localStorage.getItem('currentUser')).scrumUserId;
 
   displayAllBoards() {
     this.boardsService.getAllBoards().subscribe(
       res => {
         this.boards = res;
         localStorage.setItem('currentBoards', JSON.stringify(res));
-      })
+      });
   }
 
   onSelect(board: Board, num: number, str: string): void {
@@ -93,7 +93,7 @@ export class BoardsComponent implements OnInit {
       res => {
         localStorage.setItem('currentChart', JSON.stringify(res));
       }
-    )
+    );
   }
 
   gotoDetail() {
@@ -102,12 +102,12 @@ export class BoardsComponent implements OnInit {
 
   addBoard(): void {
 
-    if(this.newBoard.boardName == '') {
-      window.alert("Board Name cannot be empty");
+    if (this.newBoard.boardName == '') {
+      window.alert('Board Name cannot be empty');
     } else {
         this.boardsService.addBoard(this.newBoard).subscribe(
           res => {
-          })
+          });
       }
   }
 
@@ -126,13 +126,13 @@ export class BoardsComponent implements OnInit {
     boardId: null,
     scrumUserId: null,
     comment: ''
-  }
+  };
 
   viewComments(board: Board, id: number): void {
     this.commentsService.show();
-    var num = id;
+    const num = id;
     this.commentsService.getCommentsForBoard(num).subscribe(
-      res=> {
+      res => {
         this.comments = res;
       });
   }
@@ -140,7 +140,7 @@ export class BoardsComponent implements OnInit {
   private currentUser = JSON.parse(localStorage.getItem('currentUser'));
   currentUserId = this.currentUser.scrumUserId;
 
-  newComment(id: number):void {
+  newComment(id: number): void {
     this.addComment.boardId = id;
     this.addComment.scrumUserId = this.currentUserId;
     this.commentsService.addComment(this.addComment).subscribe(

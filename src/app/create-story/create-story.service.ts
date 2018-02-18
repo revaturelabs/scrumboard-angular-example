@@ -8,9 +8,9 @@ export class CreateStoryService {
     private static readonly ADD_STORY_URL = '/story-manager-service/addStory';
 
     // This setup the header information for the request.
-    private headers = new Headers({ 
-        "Content-Type": "application/json",
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUsertoken')).token 
+    private headers = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUsertoken')).token
     });
     private options = new RequestOptions({ headers: this.headers });
 

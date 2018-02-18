@@ -56,7 +56,7 @@ const routes: Routes = [
   { path: 'add-story', component: CreateStoryComponent},
   { path: 'boards', component: BoardsComponent},
   { path: 'add-board', component: AddBoardComponent}
-]
+];
 
 @NgModule({
   declarations: [
@@ -85,7 +85,7 @@ const routes: Routes = [
     HttpClientModule,
     ChartsModule,
     BootstrapModalModule,
-    BootstrapModalModule.forRoot({container:document.body}),
+    BootstrapModalModule.forRoot({container: document.body}),
     RouterModule.forRoot(routes, {useHash: true})
   ],
   entryComponents: [

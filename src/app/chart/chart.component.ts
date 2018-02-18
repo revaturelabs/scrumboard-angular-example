@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ChartsModule } from 'ng2-charts';
-import { Http } from "@angular/http";
+import { Http } from '@angular/http';
 import { DatePipe } from '@angular/common';
 import { ChartService } from './chart.service';
 import { Chart } from './chart.interface';
@@ -33,16 +33,16 @@ export class ChartComponent implements OnInit {
             }
         ]
     }
-  }
+  };
 
   board: Board = {
     boardId: null,
     boardName: ''
-  }
-  
+  };
+
 
   constructor(
-    private chartService: ChartService, 
+    private chartService: ChartService,
     private router: Router
   ) { }
 
@@ -66,7 +66,7 @@ export class ChartComponent implements OnInit {
       add a back button to go back to board details
       moving a story does not change the last move date, need to fix that to reflect change in chart
   */
-  public lineChartColors:Array<any> = [ 
+  public lineChartColors: Array<any> = [
     {
     backgroundColor: 'rgb(255, 0, 0)',
     borderColor: 'rgb(255, 0, 0)',
@@ -84,13 +84,13 @@ export class ChartComponent implements OnInit {
   //   {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
   // ];
 
-  public lineChartLabels:Array<any> = [ 
+  public lineChartLabels: Array<any> = [
     {
       defaultFontSize: 20
     }
   ];
 
-  public lineChartOptions:Array<any> = [ 
+  public lineChartOptions: Array<any> = [
     {
     backgroundColor: 'rgb(255, 0, 0)',
     borderColor: 'rgb(255, 0, 0)',

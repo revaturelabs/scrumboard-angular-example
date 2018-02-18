@@ -16,7 +16,7 @@ export class TaskComponent implements OnInit {
     taskId:    null,
     storyId: null,  //change this later to import Story and get storyId from there
     description : ''
-  }
+  };
 
   _tasksArray: Task[];
 
@@ -48,7 +48,7 @@ export class TaskComponent implements OnInit {
         //places reponse of task-manager-service/getAllTasks/{storyId} into task array
         this._tasksArray = res;
       }
-    )
+    );
   }
 
 }

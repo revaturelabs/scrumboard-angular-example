@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    if( this.roleId != 2) {
+    if ( this.roleId != 2) {
       this.navbarService.hide();
     } else {
       this.navbarService.show();

@@ -10,14 +10,14 @@ import { DeleteStory } from './delete-story.interface';
 @Injectable()
 export class SwimlaneService {
 
-  private GET_ALL_STORIES = "/story-manager-service/allboardStories/";
-  private ADD_USER_TO_BOARD = "/user-service/addUserToBoard"
-  private static readonly DELETE_STORY_URL = "/story-manager-service/deleteStory/";
-  private static readonly MOVE_STORY_URL ='/story-manager-service/moveStoryLane';
+  private GET_ALL_STORIES = '/story-manager-service/allboardStories/';
+  private ADD_USER_TO_BOARD = '/user-service/addUserToBoard';
+  private static readonly DELETE_STORY_URL = '/story-manager-service/deleteStory/';
+  private static readonly MOVE_STORY_URL = '/story-manager-service/moveStoryLane';
 
   // This setup the header information for the request.
   private headers = new Headers({
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUsertoken')).token
   });
   private options = new RequestOptions({ headers: this.headers });
@@ -35,7 +35,7 @@ export class SwimlaneService {
     return this.http.post(SwimlaneService.DELETE_STORY_URL, story, this.options);
   }
 
-  addUserToBoard():void {
+  addUserToBoard(): void {
 
   }
 

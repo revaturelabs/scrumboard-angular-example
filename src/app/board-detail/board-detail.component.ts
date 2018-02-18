@@ -30,7 +30,7 @@ export class BoardDetailComponent implements OnInit {
       this.navigated = true;
       this.boardsService.getBoard(id).subscribe(
         res => {
-        })
+        });
     });
     this.callCurrentBoard();
   }

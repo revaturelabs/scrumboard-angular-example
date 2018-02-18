@@ -19,7 +19,7 @@ export class AddUserComponent implements OnInit {
   addUser: AddUser = {
     boardId: null,
     scrumUserId: null
-  }
+  };
 
   constructor(
     private addUserService: AddUserService,
@@ -42,7 +42,7 @@ export class AddUserComponent implements OnInit {
       res => {
         this.usersNotOnBoard = res;
         // console.log(this.usersNotOnBoard)
-      })
+      });
   }
 
   displayUsers(): void{
@@ -55,8 +55,8 @@ export class AddUserComponent implements OnInit {
     this.addUser.scrumUserId = id;
     this.addUser.boardId = this.currentBoardId;
     // console.log(this.addUser.scrumUserId + ' ' + this.addUser.boardId);
-    if(this.addUser.scrumUserId == null) {
-      window.alert("Scrum User Id cannot be empty");
+    if (this.addUser.scrumUserId == null) {
+      window.alert('Scrum User Id cannot be empty');
     } else {
       this.addUserService.addUserToBoard(this.addUser).subscribe(
         res => {
