@@ -6,7 +6,7 @@ import { Chart } from './chart.interface';
 @Injectable()
 export class ChartService {
 
-    private static getChartByBoardIdURL = '/chart-service/getChart/';
+    private static getChartByBoardIdURL = 'http://localhost:8765/chart-service/getChart/';
 
     // This setup the header information for the request.
     private headers = new Headers({
@@ -15,7 +15,7 @@ export class ChartService {
     });
     private options = new RequestOptions({ headers: this.headers });
 
-    constructor(private http: Http){}
+    constructor(private http: Http) {}
 
     getChart(boardId): Observable<any> {
         return this.http.get(ChartService.getChartByBoardIdURL + boardId,  this.options).map(response => <Chart[]> response.json());

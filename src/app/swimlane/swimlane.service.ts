@@ -9,11 +9,11 @@ import { DeleteStory } from './delete-story.interface';
 
 @Injectable()
 export class SwimlaneService {
+  private static readonly DELETE_STORY_URL = 'http://localhost:8765/story-manager-service/deleteStory/';
+  private static readonly MOVE_STORY_URL = 'http://localhost:8765/story-manager-service/moveStoryLane';
 
-  private GET_ALL_STORIES = '/story-manager-service/allboardStories/';
-  private ADD_USER_TO_BOARD = '/user-service/addUserToBoard';
-  private static readonly DELETE_STORY_URL = '/story-manager-service/deleteStory/';
-  private static readonly MOVE_STORY_URL = '/story-manager-service/moveStoryLane';
+  private GET_ALL_STORIES = 'http://localhost:8765/story-manager-service/allboardStories/';
+  private ADD_USER_TO_BOARD = 'http://localhost:8765/user-service/addUserToBoard';
 
   // This setup the header information for the request.
   private headers = new Headers({

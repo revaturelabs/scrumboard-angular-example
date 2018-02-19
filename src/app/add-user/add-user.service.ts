@@ -8,10 +8,11 @@ import { AddUser } from './add-user.interface';
 @Injectable()
 export class AddUserService {
 
-  private USER_FOR_BOARD = '/user-service/getAllUsersForBoard/';
-  private USER_NOT_BOARD = '/user-service/getAllUsersNotOnBoard/';
+  private static readonly ADD_USER_TO_BOARD = 'http://localhost:8765/user-service/addUserToBoard/';
 
-  private static readonly ADD_USER_TO_BOARD = '/user-service/addUserToBoard/';
+  private USER_FOR_BOARD = 'http://localhost:8765/user-service/getAllUsersForBoard/';
+  private USER_NOT_BOARD = 'http://localhost:8765/user-service/getAllUsersNotOnBoard/';
+
 
   constructor(
     private http: Http,

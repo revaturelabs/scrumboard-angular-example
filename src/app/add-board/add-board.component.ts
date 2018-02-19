@@ -29,7 +29,7 @@ export class AddBoardComponent implements OnInit {
 
   addBoard(): void {
 
-    if (this.newBoard.boardName == '') {
+    if (this.newBoard.boardName === '') {
       window.alert('Board Name cannot be empty');
     } else {
         this.boardsService.addBoard(this.newBoard).subscribe(

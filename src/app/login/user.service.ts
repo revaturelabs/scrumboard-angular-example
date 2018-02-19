@@ -7,7 +7,7 @@ import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class UserService {
-  //this will be: http://localhost:8765/user-service/...
+  // this will be: http://localhost:8765/user-service/...
   private static readonly SERVICE_URL = '/user-service';
   private static readonly LOGIN_URL = UserService.SERVICE_URL + '/login';
   private static readonly UATH_URL = UserService.SERVICE_URL + '/oauth/token';
@@ -21,13 +21,12 @@ export class UserService {
   private creds: String;
   private updatedUser: string;
 
-  //Inject Http to http thru a constructor.
-  constructor(private http: Http){}
+  // Inject Http to http thru a constructor.
+  constructor(private http: Http) {}
 
-  //Inject User interface to user, using Observable for async data. It's a normal post request.
+  // Inject User interface to user, using Observable for async data. It's a normal post request.
   loginUser(user: User): Observable<any> {
     // console.log(user.scrumUserUsername + ' ' + user.scrumUserPassword);
-
     // Calls the authenticate() method to get a token for Authentication.
     this.authenticate(user);
 
@@ -38,11 +37,13 @@ export class UserService {
     });
     this.options = new RequestOptions({ headers: this.headersOauth });
 
+    console.log('loginUser() user.service');
     // Send the HTTP POST request.
-    return this.http.post(UserService.LOGIN_URL, user, this.options).map(res => res.json());
+    return this.http.post(`http://localhost:8765` + UserService.LOGIN_URL, user, this.options).map(res => res.json());
   }
 
   authenticate(user: User) {
+    console.log('authenticate() user.service');
     this.url = 'http://localhost:8765/user-service/oauth/token';
 
     // This sets up the header information for the request.
@@ -58,8 +59,8 @@ export class UserService {
     params.append('password', user.scrumUserPassword);
     params.append('grant_type', 'password');
 
-    // Send the HTTP POST request.
-    this.http.post(UserService.UATH_URL, params.toString(), this.options).delay(4000)
+    // Send the HTTP POST request. UserService.UATH_URL
+    this.http.post(this.url, params.toString(), this.options).delay(4000)
       .map(res => res.json()).subscribe(response => {
 
         // Adds the token to the local storage for reuse.

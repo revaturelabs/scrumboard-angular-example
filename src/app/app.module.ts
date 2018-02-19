@@ -92,7 +92,11 @@ const routes: Routes = [
     ModalComponent
   ],
 
-  providers: [DatePipe, UserService, AddUserService, BoardsService, SwimlaneService, NavbarService, TaskService, CreateStoryService, ChartService, ModalService, CommentsService],
+  providers: [DatePipe, UserService,
+    AddUserService, BoardsService,
+    SwimlaneService, NavbarService,
+    TaskService, CreateStoryService,
+    ChartService, ModalService, CommentsService],
 
   bootstrap: [AppComponent]
 })

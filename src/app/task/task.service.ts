@@ -6,8 +6,8 @@ import { Task } from './task.interface';
 @Injectable()
 export class TaskService {
 
-    private static readonly NEW_TASK_URL = '/task-manager-service/newTask';
-    private static getAllTasksByStoryIdURL = '/task-manager-service/getAllTasks/';
+    private static readonly NEW_TASK_URL = 'http://localhost:8765/task-manager-service/newTask';
+    private static getAllTasksByStoryIdURL = 'http://localhost:8765/task-manager-service/getAllTasks/';
 
     // This setup the header information for the request.
     private headers = new Headers({

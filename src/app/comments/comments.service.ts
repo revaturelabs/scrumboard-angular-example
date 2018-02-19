@@ -8,9 +8,10 @@ import { Comment } from './comment.interface';
 import { AddComment } from './add-comment.interface';
 @Injectable()
 export class CommentsService {
+  private static readonly ADD_COMMENT = 'http://localhost:8765/board-comment-service/newComment';
+  visible: boolean;
 
-  private GET_COMMENTS = '/board-comment-service/getCommentsForBoard/';
-  private static readonly ADD_COMMENT = '/board-comment-service/newComment';
+  private GET_COMMENTS = 'http://localhost:8765/board-comment-service/getCommentsForBoard/';
 
   private headers = new Headers({
     'Content-Type': 'application/json',
@@ -28,15 +29,13 @@ export class CommentsService {
     return this.http.post(CommentsService.ADD_COMMENT, comment, this.options);
   }
 
-  visible: boolean;
-
   hide() { this.visible = false; }
 
   show() { this.visible = true; }
 
   constructor(
     private http: Http,
-    private httpClient: HttpClient){
+    private httpClient: HttpClient) {
     this.visible = false;
   }
 

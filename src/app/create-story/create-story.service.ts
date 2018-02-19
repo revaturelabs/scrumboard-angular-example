@@ -5,7 +5,7 @@ import { CreateStory } from './create-story.interface';
 
 @Injectable()
 export class CreateStoryService {
-    private static readonly ADD_STORY_URL = '/story-manager-service/addStory';
+    private static readonly ADD_STORY_URL = 'http://localhost:8765/story-manager-service/addStory';
 
     // This setup the header information for the request.
     private headers = new Headers({
@@ -14,7 +14,7 @@ export class CreateStoryService {
     });
     private options = new RequestOptions({ headers: this.headers });
 
-    constructor(private http: Http){}
+    constructor(private http: Http) {}
 
     createNewStory(story: CreateStory): Observable<any> {
         return this.http.post(CreateStoryService.ADD_STORY_URL, story, this.options);
